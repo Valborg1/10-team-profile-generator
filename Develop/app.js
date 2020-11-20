@@ -23,21 +23,48 @@ const addManagerQs = () => {
         type: 'input',
         message: 'What is your manager\'s name?',
         name: 'name',
+        validate: async (input) => {
+            if (!input) {
+                return "Please enter a name for your manager."
+            } 
+            return true;
+        }
       },
       {
         type: 'input',
         message: 'What is their ID Number?',
         name: 'id',
+        validate: async (input) => {
+            var regExp = /[a-zA-Z]/g;
+            if (regExp.test(input) || input === "") {
+                return "Please enter a number."
+            } 
+            return true;
+        }
       },
       {
         type: 'input',
         message: 'What is their email?',
         name: 'email',
+        validate: async (input) => {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (!re.test(input)) {
+                return "Please enter a valid email."
+            } 
+            return true;
+        }
       },
       {
         type: 'input',
         message: 'What is their office number?',
         name: 'office',
+        validate: async (input) => {
+            var regExp = /[a-zA-Z]/g;
+            if (regExp.test(input) || input === "") {
+                return "Please enter a number."
+            } 
+            return true;
+        }
       },
     ])
     return inquirer.prompt(questions)
@@ -114,21 +141,47 @@ const addEmployeesQs = () => {
             type: 'input',
             message: 'What is your engineer\'s name?',
             name: 'name',
+            validate: async (input) => {
+                if (!input) {
+                    return "Please enter a name for your engineer."
+                } 
+                return true;
+            }
           },
           {
             type: 'input',
             message: 'What is their ID Number?',
             name: 'id',
+            validate: async (input) => {
+                var regExp = /[a-zA-Z]/g;
+                if (regExp.test(input) || input === "") {
+                    return "Please enter a number."
+                } 
+                return true;
+            }
           },
           {
             type: 'input',
             message: 'What is their email?',
             name: 'email',
+            validate: async (input) => {
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if (!re.test(input)) {
+                    return "Please enter a valid email."
+                } 
+                return true;
+            }
           },
           {
             type: 'input',
             message: 'What is their Github user name?',
             name: 'github',
+            validate: async (input) => {
+                if (!input) {
+                    return "Please enter a Github user name for your engineer."
+                } 
+                return true;
+            }
           }
         ])
           return inquirer.prompt(questions)
@@ -160,21 +213,47 @@ const addEmployeesQs = () => {
             type: 'input',
             message: 'What is your Intern\'s name?',
             name: 'name',
+            validate: async (input) => {
+                if (!input) {
+                    return "Please enter a name for your intern."
+                } 
+                return true;
+            }
           },
           {
             type: 'input',
             message: 'What is their ID Number?',
             name: 'id',
+            validate: async (input) => {
+                var regExp = /[a-zA-Z]/g;
+                if (regExp.test(input) || input === "") {
+                    return "Please enter a number."
+                } 
+                return true;
+            }
           },
           {
             type: 'input',
             message: 'What is their email?',
             name: 'email',
+            validate: async (input) => {
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if (!re.test(input)) {
+                    return "Please enter a valid email."
+                } 
+                return true;
+            }
           },
           {
             type: 'input',
             message: 'What school do they attend?',
             name: 'school',
+            validate: async (input) => {
+                if (!input) {
+                    return "Please enter a school for your intern."
+                } 
+                return true;
+            }
           }
         ])
           return inquirer.prompt(questions)
