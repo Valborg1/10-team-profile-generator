@@ -26,12 +26,10 @@ const addEmployee = async () => {
       case "Yes, add an engineer.":
         console.log("You added an engineer")
         addEngineer();
-        // ask();
         break;
       case "Yes, add an intern.":
         console.log("You added an intern")
         // addIntern();
-        ask();
         break;
       case "No, I'm done adding employees.":
         console.log("You are done")
@@ -42,10 +40,8 @@ const addEmployee = async () => {
     }
   })
 }
-
 // Call the Add Employee Function
 addEmployee();
-
 
 // Variable to Add Engineer
 const addEngineerQs = () => { 
@@ -74,21 +70,21 @@ const addEngineerQs = () => {
         return inquirer.prompt(questions)
     };
 
-  // Function to Add Engineer
-  const addEngineer = async () => {
-      await addEngineerQs()
-      .then(response => {
-        console.log(response);
+// Function to Add Engineer
+const addEngineer = async () => {
+  await addEngineerQs()
+    .then(response => {
+      console.log(response);
 
-        const name = response.name;
-        const id = response.id;
-        const email = response.email;
-        const github = response.github;
+      const name = response.name;
+      const id = response.id;
+      const email = response.email;
+      const github = response.github;
 
-        const x = new Engineer(name, id, email, github);
+      const x = new Engineer(name, id, email, github);
 
-        console.log(x)
-      })
+      console.log(x)
+    })
   addEmployee();                                                                                                       
 };
 
