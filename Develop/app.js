@@ -83,12 +83,8 @@ const addManager = async () => {
 
         const x = new Manager(name, id, email, office);
         employees.push(x);
-        
-        console.log("employee array", employees)
-        console.log("check class", x.constructor.name)
 
-        console.log(x)
-
+        // console.log(x)
         })
     addEmployee();                                                                                                       
   };
@@ -201,7 +197,7 @@ const addEmployeesQs = () => {
           const x = new Engineer(name, id, email, github);
           employees.push(x);
 
-          console.log(x);
+        //   console.log(x);
         })
     addEmployee();                                                                                                       
   };
@@ -273,7 +269,7 @@ const addEmployeesQs = () => {
           const x = new Intern(name, id, email, school);
           employees.push(x);
 
-          console.log(x)
+        //   console.log(x)
         })
     addEmployee();                                                                                                       
   };
