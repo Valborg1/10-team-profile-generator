@@ -1,0 +1,19 @@
+.jumbotron {
+    background-color: #0f4c5c;
+}
+
+h1, h2, h3 {
+    color: white;
+}
+
+.manager {
+    background-color: #9a031e;
+}
+
+.engineer {
+    background-color: #e36414;
+}
+
+.intern {
+    background-color: #fb8b24;
+}

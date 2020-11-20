@@ -12,8 +12,64 @@ const render = require("./lib/htmlRenderer");
 
 
 
-
+// Array to Store All Employee Objects
 const employees = [];
+
+
+// Variable to Add a Manager
+const addManagerQs = () => {
+    const questions = ([
+      {
+        type: 'input',
+        message: 'What is your manager\'s name?',
+        name: 'name',
+      },
+      {
+        type: 'input',
+        message: 'What is their ID Number?',
+        name: 'id',
+      },
+      {
+        type: 'input',
+        message: 'What is their email?',
+        name: 'email',
+      },
+      {
+        type: 'input',
+        message: 'What is their office number?',
+        name: 'office',
+      },
+    ])
+    return inquirer.prompt(questions)
+};
+
+// Function to Add A Manager
+const addManager = async () => {
+    await addManagerQs()
+    .then(response => {
+        console.log(response);
+
+        const name = response.name;
+        const id = response.id;
+        const email = response.email;
+        const office = response.office;
+
+        const x = new Manager(name, id, email, office);
+        employees.push(x);
+        
+        console.log("employee array", employees)
+        console.log("check class", x.constructor.name)
+
+        console.log(x)
+
+        })
+    addEmployee();                                                                                                       
+  };
+
+
+// Call the Add Manager Function
+addManager();
+
 
 // Variable to Add An Employee
 const addEmployeesQs = () => {
@@ -36,27 +92,19 @@ const addEmployeesQs = () => {
   
       switch(response.answer) {
         case "Yes, add an engineer.":
-          console.log("You added an engineer")
           addEngineer();
-          // ask();
           break;
         case "Yes, add an intern.":
-          console.log("You added an intern")
-          // addIntern();
-          ask();
+          addIntern();
           break;
         case "No, I'm done adding employees.":
-          console.log("You are done")
-          // createHTML();
+          renderHTML();
           break;
         default:
           console.log("It didn't work")
       }
     })
   }
-  
-  // Call the Add Employee Function
-  addEmployee();
   
   
   // Variable to Add Engineer
@@ -99,13 +147,71 @@ const addEmployeesQs = () => {
   
           const x = new Engineer(name, id, email, github);
           employees.push(x);
-          
-          console.log("employee array", employees)
+
+          console.log(x);
+        })
+    addEmployee();                                                                                                       
+  };
+
+  // Variable to Add Intern
+  const addInternQs = () => { 
+    const questions = ([
+          {
+            type: 'input',
+            message: 'What is your Intern\'s name?',
+            name: 'name',
+          },
+          {
+            type: 'input',
+            message: 'What is their ID Number?',
+            name: 'id',
+          },
+          {
+            type: 'input',
+            message: 'What is their email?',
+            name: 'email',
+          },
+          {
+            type: 'input',
+            message: 'What school do they attend?',
+            name: 'school',
+          }
+        ])
+          return inquirer.prompt(questions)
+      };
+  
+    // Function to Add Intern
+    const addIntern = async () => {
+        await addInternQs()
+        .then(response => {
+          console.log(response);
+  
+          const name = response.name;
+          const id = response.id;
+          const email = response.email;
+          const school = response.school;
+  
+          const x = new Intern(name, id, email, school);
+          employees.push(x);
 
           console.log(x)
         })
     addEmployee();                                                                                                       
   };
+
+
+
+// Call the Render Function  
+function renderHTML() {
+  fs.writeFile(outputPath, render(employees), (err) => {
+    if (err) throw err;
+    console.log('The file has been saved!');
+  });
+}
+
+
+
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
